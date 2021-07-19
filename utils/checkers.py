@@ -1,10 +1,18 @@
 from numbers import Number
+from inspect import signature
 
+from utils.inspectors import arity
 
 
 def check_is_function(x):
     if not callable(x):
         raise TypeError(f"Expected function but got {x}")
+
+
+def check_is_1_arity_function(x):
+    check_is_function(x)
+    if not arity(x) == 1:
+        raise TypeError(f"Expected 1 arity function but got {arity}")
 
 
 def check_is_list(x):

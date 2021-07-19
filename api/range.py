@@ -5,7 +5,7 @@ from utils.decorators import curry
 
 
 @curry
-def rang(x: int, y: int) -> List[int]:
+def range_(x: int, y: int) -> List[int]:
     check_is_int(x)
     check_is_int(y)
 
