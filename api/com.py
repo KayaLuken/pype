@@ -10,6 +10,6 @@ def com(f: Callable, g: Callable) -> Callable:
     check_is_function(g)
 
     @curry
-    def h(f, g, x):
-        return f(g(x))
+    def h(x):
+        return g(f(x))
     return h
