@@ -10,6 +10,3 @@ def pipe(fs: List[Callable], x):
     for f in fs:
         acc = f(acc)
     return acc
-
-
-__all__ = ['pipe']
