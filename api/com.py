@@ -1,6 +1,6 @@
 from typing import Callable
 
-from utils.checkers import check_is_function, check_is_1_arity_function
+from utils.checkers import check_is_function
 from utils.decorators import curry
 from utils.inspectors import arity
 
@@ -8,7 +8,7 @@ from utils.inspectors import arity
 @curry
 def com(f: Callable, g: Callable) -> Callable:
     check_is_function(f)
-    check_is_1_arity_function(g)
+    check_is_function(g)
 
     def h(x):
         return g(f(x))
