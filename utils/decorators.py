@@ -1,8 +1,9 @@
 from functools import wraps
+
 from api import _
 
 
-def curried_function(arg_count):
+def curried_function(arg_count, original_name):
     def arity_1(x):pass
     def arity_2(x, y):pass
     def arity_3(x, y, z):pass
@@ -10,17 +11,21 @@ def curried_function(arg_count):
     def arity_5(x, y, z, v, w):pass
 
     m = {1: arity_1, 2: arity_2, 3: arity_3, 4: arity_4, 5: arity_5}
-    return m[arg_count]
+    cf = m[arg_count]
+    cf.__name__ = original_name
+    return cf
 
 
 
-def curry(f, total_args=None):
+def curry(f, total_args=None, name=''):
     if total_args is None:
         argc = f.__code__.co_argcount
         total_args = [_ for i in range(argc)]
 
     available_indices = [i for (i, arg) in enumerate(total_args) if arg is _]
-    w = curried_function(len(available_indices))
+
+    name = name or f.__name__
+    w = curried_function(len(available_indices), name)
 
     # for getting correct arg count of curried function
     @wraps(w)
@@ -36,7 +41,6 @@ def curry(f, total_args=None):
 
         def q(*b):
             return f(*b)
-
-        return curry(q, new_total_args)
+        return curry(q, new_total_args, name)
 
     return p

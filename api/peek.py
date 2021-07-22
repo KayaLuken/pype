@@ -2,5 +2,5 @@
 
 
 def peek(x):
-    print(x)
+    print(f"PEEKED: ===> {x} <===")
     return x

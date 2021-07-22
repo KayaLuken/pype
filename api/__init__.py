@@ -1,4 +1,5 @@
 from ._ import *
+from .add import *
 from .append import *
 from .both import *
 from .com import *
@@ -10,6 +11,7 @@ from .filter import *
 from .gt import *
 from .inc import *
 from .is_even import *
+from .is_factor import *
 from .is_mult import *
 from .is_odd import *
 from .len import *
@@ -23,3 +25,4 @@ from .sum import *
 from .takeLast import *
 from .then import *
 from .until import *
+from .watch import *
