@@ -6,6 +6,7 @@ from .both import *
 from .com import *
 from .com_2 import *
 from .dec import *
+from .each import *
 from .either import *
 from .eq import *
 from .filter import *
