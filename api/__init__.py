@@ -1,6 +1,7 @@
 from ._ import *
 from .add import *
 from .append import *
+from .apply import *
 from .both import *
 from .com import *
 from .com_2 import *
