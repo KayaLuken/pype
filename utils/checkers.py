@@ -1,5 +1,4 @@
 from numbers import Number
-from inspect import signature
 
 from utils.inspectors import arity
 
@@ -41,9 +40,14 @@ def check_is_bool(x):
     if not isinstance(x, bool):
         raise TypeError(f"Expected bool but got {x}")
 
+def check_equal_list_lengths(xs, ys):
+    if not len(xs) == len(ys):
+        raise ValueError(f"Expected lists of equal length but got {len(xs)} and {len(ys)}")
+
 
 def check_is_list_of_numbers(xs):
     check_is_list(xs)
     for x in xs:
         if not isinstance(x, Number):
             raise TypeError(f"Expected list of numbers but got {x} in list")
+
