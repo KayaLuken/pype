@@ -7,4 +7,4 @@ from utils.decorators import curry
 def gt(x: int, y: int) -> bool:
     check_is_int(x)
     check_is_int(y)
-    return x > y
+    return x < y
