@@ -1,6 +1,6 @@
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def fst(xs):
     return xs[0]

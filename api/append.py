@@ -1,9 +1,9 @@
 from utils.checkers import check_is_list
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
 
-@curry
+@enhance
 def append(x, xs):
     check_is_list(xs)
 

@@ -1,8 +1,8 @@
 from utils.checkers import check_is_function
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def until(p, f, x):
     check_is_function(p)
     check_is_function(f)

@@ -1,7 +1,7 @@
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def tap(f, x):
     f()
     return x

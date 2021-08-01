@@ -1,10 +1,10 @@
 from typing import List
 
 from utils.checkers import check_is_int
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def range_(x: int, y: int) -> List[int]:
     check_is_int(x)
     check_is_int(y)

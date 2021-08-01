@@ -1,11 +1,11 @@
 from typing import List, Callable
 
 from utils.checkers import check_is_list_of_functions
-from utils.decorators import curry
+from utils.decorators import enhance
 from utils.inspectors import arity
 
 
-@curry
+@enhance
 def pipe(fs: List[Callable]):
     check_is_list_of_functions(fs)
 

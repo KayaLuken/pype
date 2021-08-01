@@ -1,8 +1,8 @@
 from utils.checkers import check_is_number
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def sub(x: int, y: int) -> int:
     check_is_number(x)
     check_is_number(y)

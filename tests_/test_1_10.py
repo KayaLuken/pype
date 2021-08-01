@@ -1,11 +1,7 @@
 from projectEuler._1_multiplesOf3and5 import multiples_of_3_and_5
 from projectEuler._2_sum_even_fibonacci import sum_even_fibonacci
-from projectEuler._3_prime_factors import factors
-from utils.decorators import curry
+from projectEuler._3_prime_factors import factors, is_prime, primes_naive
 
-@curry
-def add(x,y):
-    return x + y
 
 def test_1():
     assert multiples_of_3_and_5(10) == 23
@@ -15,3 +11,6 @@ def test_2():
 
 def test_3():
     assert factors(9) == [1, 3, 9]
+    assert is_prime(7) == True
+    assert is_prime(6) == False
+    assert primes_naive(15) == [1, 2, 3, 5, 7, 11, 13]

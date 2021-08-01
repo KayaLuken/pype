@@ -1,8 +1,8 @@
 from utils.checkers import check_is_list_of_functions, check_equal_list_lengths
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def bi(fs, xs):
     check_is_list_of_functions(fs)
     check_equal_list_lengths(fs, xs)

@@ -3,18 +3,85 @@ from functools import wraps
 from api import _
 
 
+def enhance(f):
+    f = piper(curry(f))
+    return f
+
+
+def piper(f):
+    f = Pipe(f)
+    return f
+
+
+class Pipe:
+    def __init__(self, f):
+        self.f = f
+
+    def __call__(self, *x):
+        # print('calling', x)
+        res = self.f(*x)
+        if callable(res):
+            res = Pipe(res)
+        return res
+
+    def __str__(self):
+        return f"{self.f}"
+
+    def __repr__(self):
+        print(self.f)
+        return f"{self.f}"
+
+    def __or__(self, other):
+        print('or')
+        if isinstance(other, Pipe):
+            def f(*x):
+                return other(self(*x))
+            return Pipe(f)
+        else:
+            self(other)
+
+    def __ror__(self, other):
+        print('ror')
+        if isinstance(other, Pipe):
+            def f(*x):
+                return self(other(*x))
+            return Pipe(f)
+        else:
+            return self(other)
+
+    def __rshift__(self, other):
+        if isinstance(other, Pipe):
+            def f(x):
+                return self(other(*x))
+            return Pipe(f)
+        else:
+            return self(other)
+
+    def __lshift__(self, other):
+        if isinstance(other, Pipe):
+            def f(x):
+                return self(other(x))
+
+            return Pipe(f)
+        else:
+            return self(other)
+
+
 def curried_function(arg_count, original_name):
-    def arity_1(x):pass
-    def arity_2(x, y):pass
-    def arity_3(x, y, z):pass
-    def arity_4(x, y, z, v):pass
-    def arity_5(x, y, z, v, w):pass
+    def arity_1(x): pass
+
+    def arity_2(x, y): pass
+
+    def arity_3(x, y, z): pass
+
+    def arity_4(x, y, z, v): pass
+
+    def arity_5(x, y, z, v, w): pass
 
     m = {1: arity_1, 2: arity_2, 3: arity_3, 4: arity_4, 5: arity_5}
     cf = m[arg_count]
     cf.__name__ = original_name
     return cf
-
 
 
 def curry_(f, total_args=None, name=''):
@@ -41,17 +108,17 @@ def curry_(f, total_args=None, name=''):
 
         def q(*b):
             return f(*b)
+
         return curry(q, new_total_args, name)
 
     return p
 
 
-
 def curry(f):
     def inner(*args):
         return Curry.make(f, *args)
-    return inner
 
+    return inner
 
 
 class Curry:
@@ -69,7 +136,10 @@ class Curry:
         return instance.fire() if instance.ready else instance
 
     def __str__(self):
-       return f"{self.f.__name__} "
+        return f"{self.f.__name__} >>> {self.total_args}"
+
+    def __repr__(self):
+        return f"{self.f.__name__} >>> {self.total_args}"
 
     def fire(self):
         return self.f(*self.total_args)
@@ -97,3 +167,41 @@ class Curry:
             return res
         else:
             return self
+
+    def __or__(self, other):
+        print('or', self, other)
+        if isinstance(other, Curry):
+            def f(*x):
+                return other(self(*x))
+
+            return Pipe(f)
+        else:
+            return self(other)
+
+    def __ror__(self, other):
+        print('ror', self, other)
+        if isinstance(other, Curry):
+            def f(x):
+                return self(other(x))
+
+            return Pipe(f)
+        else:
+            return self(other)
+
+    def __rshift__(self, other):
+        if isinstance(other, Curry):
+            def f(x):
+                return self(other(x))
+
+            return Pipe(f)
+        else:
+            return self(other)
+
+    def __lshift__(self, other):
+        if isinstance(other, Curry):
+            def f(x):
+                return self(other(x))
+
+            return Pipe(f)
+        else:
+            return self(other)

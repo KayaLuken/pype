@@ -1,7 +1,8 @@
 
-from api import append, com, com2, is_even, filter_, sum_, then, until, len_, takeLast, eq
+from api import append, com, is_even, filter_, sum_, then, until, len_, takeLast, eq, enhance
 
 
+@enhance
 def fibonacci(n):
     return until(
         com(len_, eq(n)),
@@ -13,4 +14,4 @@ def fibonacci(n):
     )
 
 
-sum_even_fibonacci = com2(fibonacci, filter_(is_even), sum_)
+sum_even_fibonacci = fibonacci | filter_(is_even) | sum_

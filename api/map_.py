@@ -1,7 +1,7 @@
 
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def map_(f, xs):
     return [f(x) for x in xs]

@@ -1,7 +1,7 @@
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def flip(f):
     def _f(x, y):
         return f(y, x)

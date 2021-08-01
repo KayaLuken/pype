@@ -1,6 +1,6 @@
-from utils.decorators import curry
+from utils.decorators import enhance
 
 
-@curry
+@enhance
 def compress(xs):
     return [x for x in xs if xs != False]
