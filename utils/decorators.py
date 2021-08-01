@@ -38,30 +38,13 @@ class Pipe:
                 return other(self(*x))
             return Pipe(f)
         else:
-            self(other)
+            return self(other)
 
     def __ror__(self, other):
         print('ror')
         if isinstance(other, Pipe):
             def f(*x):
                 return self(other(*x))
-            return Pipe(f)
-        else:
-            return self(other)
-
-    def __rshift__(self, other):
-        if isinstance(other, Pipe):
-            def f(x):
-                return self(other(*x))
-            return Pipe(f)
-        else:
-            return self(other)
-
-    def __lshift__(self, other):
-        if isinstance(other, Pipe):
-            def f(x):
-                return self(other(x))
-
             return Pipe(f)
         else:
             return self(other)
