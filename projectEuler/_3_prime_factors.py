@@ -1,28 +1,11 @@
-from api import is_factor, range_, apply, filter_, com2, also, inc, bi, len_, lt, compress
+from api import is_factor, range_, apply, filter_, also, inc, bi, len_, lt, compress
 
-factors = com2(
+factors = also(inc) | bi( [is_factor, range_(1)]) | apply(filter_)
 
-    also(inc),
-    bi(
-        [is_factor, range_(1)])
-    ,
-    apply(filter_)
 
-)
+is_prime = factors | len_ | lt(3)
 
-is_prime = com2(
-
-    factors,
-    len_,
-    lt(3)
-
-)
-
-primes_naive = com2(
-    range_(1),
-    filter_(is_prime),
-    compress
-)
+primes_naive = range_(1) | filter_(is_prime) | compress
 
 # next_prime = com2(also(fst),also(apply(flip(filter_))),append, last)
 # get 1st in left list and append to right list

@@ -1,6 +1,8 @@
 from utils.checkers import check_is_function
+from utils.decorators import enhance
 
 
+@enhance
 def watch(f):
     check_is_function(f)
 
