@@ -18,7 +18,6 @@ class Pipe:
         self.f = f
 
     def __call__(self, *x):
-        # print('calling', x)
         res = self.f(*x)
         if callable(res):
             res = Pipe(res)
@@ -28,11 +27,9 @@ class Pipe:
         return f"{self.f}"
 
     def __repr__(self):
-        print(self.f)
         return f"{self.f}"
 
     def __or__(self, other):
-        print('or')
         if isinstance(other, Pipe):
             def f(*x):
                 return other(self(*x))
@@ -41,7 +38,6 @@ class Pipe:
             return self(other)
 
     def __ror__(self, other):
-        print('ror')
         if isinstance(other, Pipe):
             def f(*x):
                 return self(other(*x))
@@ -152,7 +148,6 @@ class Curry:
             return self
 
     def __or__(self, other):
-        print('or', self, other)
         if isinstance(other, Curry):
             def f(*x):
                 return other(self(*x))
@@ -162,7 +157,6 @@ class Curry:
             return self(other)
 
     def __ror__(self, other):
-        print('ror', self, other)
         if isinstance(other, Curry):
             def f(x):
                 return self(other(x))

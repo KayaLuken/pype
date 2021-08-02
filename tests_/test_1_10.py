@@ -1,6 +1,7 @@
 from projectEuler._1_multiplesOf3and5 import multiples_of_3_and_5
 from projectEuler._2_sum_even_fibonacci import sum_even_fibonacci
-from projectEuler._3_prime_factors import factors, is_prime, primes_naive, next_prime, primes_sieve_of_erosthenes
+from projectEuler._3_prime_factors import factors, is_prime, primes_naive, next_prime, primes_sieve_of_erosthenes, \
+    primes_imperative
 
 
 def test_1():
@@ -16,3 +17,4 @@ def test_3():
     assert primes_naive(15) == [2, 3, 5, 7, 11, 13]
     assert next_prime([[2, 3, 4, 5], []]) == [[3, 5], [2]]
     assert primes_sieve_of_erosthenes(15) == [2, 3, 5, 7, 11, 13]
+    assert primes_imperative(15) == [2, 3, 5, 7, 11, 13]
