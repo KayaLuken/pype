@@ -3,7 +3,6 @@ from .add import *
 from .also import *
 from .append import *
 from .apply import *
-from .bi import *
 from .both import *
 from .com import *
 from .com_2 import *
@@ -28,6 +27,7 @@ from .lt import *
 from .map_ import *
 from .mod import *
 from .ne import *
+from .onto import *
 from .peek import *
 from .pipe import *
 from .range import *
