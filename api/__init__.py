@@ -32,6 +32,8 @@ from .path import *
 from .peek import *
 from .pipe import *
 from .range import *
+from .reject import *
+from .snd import *
 from .sub import *
 from .sum import *
 from .takeLast import *
