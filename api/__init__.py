@@ -28,6 +28,7 @@ from .map_ import *
 from .mod import *
 from .ne import *
 from .onto import *
+from .path import *
 from .peek import *
 from .pipe import *
 from .range import *
@@ -35,5 +36,6 @@ from .sub import *
 from .sum import *
 from .takeLast import *
 from .then import *
+from .thenEach import *
 from .until import *
 from .watch import *
